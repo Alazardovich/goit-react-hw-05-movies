@@ -14,7 +14,7 @@ export const Container = styled.div`
   display: flex;
   /* max-width: 1170px; */
   width: 100%;
-  margin: 0 auto;
+  margin: 0 15px;
 `;
 export const BlockImg = styled.div`
   margin: 10px 10px 10px 0;
