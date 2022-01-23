@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import { fetchReviews } from "../../utils/Api";
 
@@ -28,5 +29,7 @@ const Reviews = () => {
     </article>
   );
 };
-
+Reviews.propTypes = {
+  movieId: PropTypes.string,
+};
 export default Reviews;

@@ -1,4 +1,5 @@
 import { FiArrowLeft } from "react-icons/fi";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
 import { fetchMovieId } from "../../utils/Api";
@@ -68,5 +69,7 @@ const MovieDetailsPage = () => {
     </>
   );
 };
-
+MovieDetailsPage.propTypes = {
+  movieId: PropTypes.string,
+};
 export default MovieDetailsPage;

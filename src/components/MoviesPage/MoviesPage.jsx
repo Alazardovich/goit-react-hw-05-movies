@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { fetchMoviePage } from "../../utils/Api";
 // import MovieDetailsPage from '../MovieDetailsPage/MovieDetailsPage';
@@ -59,5 +60,7 @@ const MoviesPage = () => {
     </div>
   );
 };
-
+MoviesPage.propTypes = {
+  searchQuery: PropTypes.string 
+}
 export default MoviesPage;

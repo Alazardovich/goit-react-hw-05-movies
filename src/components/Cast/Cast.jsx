@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCasts } from "../../utils/Api";
@@ -18,27 +19,29 @@ const Cast = () => {
   return (
     <Container>
       {actors &&
-        actors.map((actor) => {
+        actors.map(({ id, profile_path, name, character }) => {
           return (
-            <div key={actor.id}>
+            <div key={id}>
               <img
                 src={
-                  actor.profile_path
-                    ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${profile_path}`
                     : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
                 }
-                alt={actor.name}
+                alt={name}
                 width="80"
               />
               <List>
-                <li>{actor.name}</li>
+                <li>{name}</li>
               </List>
-              <p>{actor.character}</p>
+              <p>{character}</p>
             </div>
           );
         })}
     </Container>
   );
 };
-
+Cast.propTypes = {
+  movieId: PropTypes.string,
+};
 export default Cast;
