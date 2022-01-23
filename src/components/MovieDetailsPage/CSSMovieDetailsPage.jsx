@@ -12,7 +12,7 @@ export const Button = styled.button`
 `;
 export const Container = styled.div`
   display: flex;
-  max-width: 1170px;
+  /* max-width: 1170px; */
   width: 100%;
   margin: 0 auto;
 `;
