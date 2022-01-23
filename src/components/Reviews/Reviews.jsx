@@ -11,7 +11,6 @@ const Reviews = () => {
       .catch((error) => console.log(error));
   }, [movieId]);
 
-  // console.log(reviews);
   return (
     <article>
       {reviews && reviews.length !== 0 ? (
