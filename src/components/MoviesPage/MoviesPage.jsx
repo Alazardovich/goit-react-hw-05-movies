@@ -16,9 +16,11 @@ const MoviesPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    if (!searchQuery) {
+      return;
+    }
     if (searchQuery === "") {
-      alert("noool");
+      alert("Ввелите название");
     }
     fetchMoviePage(searchQuery).then((response) => setMovies(response.results));
   };

@@ -1,8 +1,14 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable no-unreachable */
+import { FiArrowLeft } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
 import { fetchMovieId } from "../../utils/Api";
+import {
+  Button,
+  Container,
+  BlockImg,
+  Genre,
+  ContainerNav,
+} from "./CSSMovieDetailsPage";
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -11,16 +17,18 @@ const MovieDetailsPage = () => {
     () => fetchMovieId(movieId).then((response) => setMovie(response)),
     [movieId]
   );
-
+  // console.log(movieId);
+  // console.log(movie);
   return (
     <>
-      <button>
-        <Link to="/">MovieDetailsPage</Link>
-      </button>
+      <Button>
+        <FiArrowLeft style={{ marginRight: 4 }} />
+        <Link to="/">Go home</Link>
+      </Button>
       {movie && (
         <>
-          <div>
-            <div>
+          <Container>
+            <BlockImg>
               {" "}
               <img
                 src={
@@ -31,28 +39,29 @@ const MovieDetailsPage = () => {
                 alt={movie.original_title}
                 width="200"
               />
-            </div>
+            </BlockImg>
             <div>
               <h1>{movie.original_title}</h1>
-              <h2>overview</h2>
+              <h2>Overview</h2>
               <p>{movie.overview ?? movie.title}</p>
               <h3>Genres</h3>
               <p>
                 {movie &&
                   movie.genres.map(({ name, id }) => (
-                    <span key={id}>{name}</span>
+                    <Genre key={id}>{name}</Genre>
                   ))}
               </p>
             </div>
-          </div>
-          <ul>
+          </Container>
+          <p>Additional information</p>
+          <ContainerNav>
             <li>
               <Link to="cast">Cast</Link>
             </li>
             <li>
               <Link to="reviews">Reviews</Link>
             </li>
-          </ul>
+          </ContainerNav>
           <Outlet />
         </>
       )}

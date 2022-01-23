@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCasts } from "../../utils/Api";
+import { Container, List } from "./CSSCast";
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -15,7 +16,7 @@ const Cast = () => {
     );
   }, [movieId]);
   return (
-    <div>
+    <Container>
       {actors &&
         actors.map((actor) => {
           return (
@@ -29,14 +30,14 @@ const Cast = () => {
                 alt={actor.name}
                 width="80"
               />
-              <ul>
+              <List>
                 <li>{actor.name}</li>
-              </ul>
+              </List>
               <p>{actor.character}</p>
             </div>
           );
         })}
-    </div>
+    </Container>
   );
 };
 

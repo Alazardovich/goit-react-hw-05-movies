@@ -6,27 +6,27 @@ const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState();
   useEffect(() => {
-    return fetchReviews(movieId)
+    fetchReviews(movieId)
       .then((response) => setReviews(response.results))
       .catch((error) => console.log(error));
   }, [movieId]);
 
+  // console.log(reviews);
   return (
-    <>
-      {reviews ? (
+    <article>
+      {reviews && reviews.length !== 0 ? (
         reviews.map((review) => {
           return (
             <div key={review.id}>
-              <h3>{review.author}</h3>
+              <h3>Author: {review.author}</h3>
               <p>{review.content}</p>
             </div>
           );
         })
       ) : (
-        // eslint-disable-next-line jsx-a11y/alt-text
-        <img src="https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg" />
+        <h3>Not Reviews</h3>
       )}
-    </>
+    </article>
   );
 };
 
