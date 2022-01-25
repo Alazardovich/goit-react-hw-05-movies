@@ -1,10 +1,9 @@
-import { FiArrowLeft } from "react-icons/fi";
+import BackButton from "../../BackButton/BackButton";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
-import { fetchMovieId } from "../../utils/Api";
+import { fetchMovieId } from "../../../utils/Api";
 import {
-  Button,
   Container,
   BlockImg,
   Genre,
@@ -13,20 +12,23 @@ import {
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
-  useEffect(
-    () => fetchMovieId(movieId).then((response) => setMovie(response)),
-    [movieId]
-  );
-  // console.log(movieId);
-  // console.log(movie);
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
+    setLoading(true);
+    fetchMovieId(movieId)
+      .then(setMovie)
+      .catch((err) => console.log(err));
+    setLoading(false);
+  }, [movieId]);
+  const showErrorId = !isLoading && !movie;
+
   return (
     <>
-      <Button>
-        <FiArrowLeft style={{ marginRight: 4 }} />
-        <Link to="/">Go home</Link>
-      </Button>
-      {movie && (
+      <BackButton />
+      {showErrorId && <div>Not found</div>}
+      {!isLoading && movie && (
         <>
           <Container>
             <BlockImg>

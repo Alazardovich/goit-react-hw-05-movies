@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { fetchMoviePage } from "../../utils/Api";
+import ListFilms from "../../ListFilms/ListFilms";
+import { fetchMoviePage } from "../../../utils/Api";
 // import MovieDetailsPage from '../MovieDetailsPage/MovieDetailsPage';
 const MoviesPage = () => {
   const [searchQuery, setQuery] = useState("");
@@ -23,7 +23,9 @@ const MoviesPage = () => {
     if (searchQuery === "") {
       alert("Ввелите название");
     }
-    fetchMoviePage(searchQuery).then((response) => setMovies(response.results));
+    fetchMoviePage(searchQuery)
+      .then((response) => setMovies(response.results))
+      .catch((error) => console.log(error));
   };
   const inputChange = (event) => {
     setQuery(event.target.value);
@@ -45,22 +47,11 @@ const MoviesPage = () => {
         </label>
         <button type="submit">Searh</button>
       </form>
-      <ul>
-        {movies &&
-          movies.map((movie) => (
-            // eslint-disable-next-line jsx-a11y/alt-text
-            <li key={movie.id}>
-              {/* <img src={film.poster_path} /> */}
-              <Link to={`/movie/${movie.id}`}>
-                {movie.original_title ?? movie.original_name}
-              </Link>
-            </li>
-          ))}
-      </ul>
+      <ListFilms movies={movies} />
     </div>
   );
 };
 MoviesPage.propTypes = {
-  searchQuery: PropTypes.string 
-}
+  searchQuery: PropTypes.string,
+};
 export default MoviesPage;
