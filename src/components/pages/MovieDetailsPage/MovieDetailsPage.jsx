@@ -15,19 +15,22 @@ const MovieDetailsPage = () => {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
+    if (!movieId) {
+      const newLocal = "Not found";
+      return alert(newLocal);
+    }
     setLoading(true);
     fetchMovieId(movieId)
       .then(setMovie)
       .catch((err) => console.log(err));
     setLoading(false);
   }, [movieId]);
-  const showErrorId = !isLoading && !movie;
+  // const showErrorId = !isLoading && !movie;
 
   return (
     <>
       <BackButton />
-      {showErrorId && <div>Not found</div>}
+      {/* {showErrorId && <div>Not found</div>} */}
       {!isLoading && movie && (
         <>
           <Container>
