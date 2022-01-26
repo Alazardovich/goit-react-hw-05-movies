@@ -1,8 +1,8 @@
-import BackButton from "../../BackButton/BackButton";
+import BackButton from "../../components/BackButton/BackButton";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
-import { fetchMovieId } from "../../../utils/Api";
+import { fetchMovieId } from "../../utils/Api";
 import {
   Container,
   BlockImg,
@@ -15,10 +15,10 @@ const MovieDetailsPage = () => {
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!movieId) {
-      const newLocal = "Not found";
-      return alert(newLocal);
-    }
+    // if (!movieId) {
+    //   const newLocal = "Not found";
+    //   return alert(newLocal);
+    // }
     setLoading(true);
     fetchMovieId(movieId)
       .then(setMovie)

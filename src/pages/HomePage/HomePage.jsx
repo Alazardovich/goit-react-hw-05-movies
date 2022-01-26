@@ -1,6 +1,6 @@
-import ListFilms from "../../ListFilms/ListFilms";
+import ListFilms from "../../components/ListFilms/ListFilms";
 import { useState, useEffect } from "react";
-import { fetchHomePage } from "../../../utils/Api";
+import { fetchHomePage } from "../../utils/Api";
 
 const HomePage = () => {
   const [films, setFilms] = useState([]);
