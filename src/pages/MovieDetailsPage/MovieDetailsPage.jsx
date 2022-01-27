@@ -1,7 +1,7 @@
 import BackButton from "../../components/BackButton/BackButton";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { fetchMovieId } from "../../utils/Api";
 import {
   Container,
@@ -10,10 +10,11 @@ import {
   ContainerNav,
 } from "./CSSMovieDetailsPage";
 const MovieDetailsPage = () => {
+  const location = useLocation();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [isLoading, setLoading] = useState(false);
-
+  console.log("MovieDetailsPage", location);
   useEffect(() => {
     // if (!movieId) {
     //   const newLocal = "Not found";
@@ -62,10 +63,14 @@ const MovieDetailsPage = () => {
           <p>Additional information</p>
           <ContainerNav>
             <li>
-              <Link to="cast">Cast</Link>
+              <Link to="cast" state={location.state}>
+                Cast
+              </Link>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <Link to="reviews" state={location.state}>
+                Reviews
+              </Link>
             </li>
           </ContainerNav>
           <Outlet />

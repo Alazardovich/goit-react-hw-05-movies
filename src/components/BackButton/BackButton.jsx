@@ -4,8 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 const BackButton = () => {
   let navigate = useNavigate();
   let location = useLocation();
+
   const onBackButton = () => {
     navigate(location?.state?.from ?? "/");
+    // navigate(location.state.from);
+    console.log("onBackButton", location);
   };
   return (
     <Button type="button" onClick={onBackButton}>
