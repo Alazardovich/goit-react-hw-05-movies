@@ -26,8 +26,7 @@ const MoviesPage = () => {
   };
 
   return (
-    <div>
-      MoviesPage
+    <div style={{ marginTop: 10 }}>
       <SearchForm onLinkSearch={onLinkSearchUrl} />
       <ListFilms movies={movies} />
     </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Form, Input, Button, Label } from "./CSSBar";
 
 const SearchForm = ({ onLinkSearch }) => {
   const [searchQuery, setQuery] = useState("");
@@ -13,10 +14,10 @@ const SearchForm = ({ onLinkSearch }) => {
     setQuery(event.target.value);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <Form onSubmit={handleSubmit}>
+      <Label>
         Movies
-        <input
+        <Input
           value={searchQuery}
           autoComplete="off"
           autoFocus
@@ -24,9 +25,9 @@ const SearchForm = ({ onLinkSearch }) => {
           name="movie"
           onChange={inputChange}
         />
-      </label>
-      <button type="submit">Searh</button>
-    </form>
+      </Label>
+      <Button type="submit">Searh</Button>
+    </Form>
   );
 };
 
