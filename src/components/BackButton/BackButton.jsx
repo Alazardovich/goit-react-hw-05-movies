@@ -7,8 +7,6 @@ const BackButton = () => {
 
   const onBackButton = () => {
     navigate(location?.state?.from ?? "/");
-    // navigate(location.state.from);
-    console.log("onBackButton", location);
   };
   return (
     <Button type="button" onClick={onBackButton}>

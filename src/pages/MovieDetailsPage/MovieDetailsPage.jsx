@@ -14,7 +14,6 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [isLoading, setLoading] = useState(false);
-  console.log("MovieDetailsPage", location);
   useEffect(() => {
     // if (!movieId) {
     //   const newLocal = "Not found";
